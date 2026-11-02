@@ -36,6 +36,9 @@
 }
 
 /* ── Text regions ───────────────────────────────────────────────────────────── */
+.story__stage:not([data-timeline-ready='true']) .story__seq {
+  visibility: hidden;
+}
 .story__seq {
   position: absolute;
   inset: 0;
