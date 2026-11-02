@@ -159,7 +159,6 @@ function ScrollStory({ onFail }) {
           setTimelineReady(true);
         });
       });
-      setTimelineReady(true);
     }, section);
 
     return () => {
