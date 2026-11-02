@@ -92,9 +92,6 @@ export default function Hero() {
             />
             <canvas ref={canvasRef} className="hero__canvas" aria-hidden="true" />
           </div>
-          <figcaption className="hero__caption" data-hero="fade">
-            {t('hero.caption')}
-          </figcaption>
         </figure>
       </div>
 
