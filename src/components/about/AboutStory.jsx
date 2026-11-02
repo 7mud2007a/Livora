@@ -75,12 +75,30 @@ function ScrollStory({ onFail }) {
   const state = useRef(null);
   if (!state.current) state.current = makeState();
   const [ready, setReady] = useState(false);
+  const [fontsReady, setFontsReady] = useState(false);
+
+  // The story measures Arabic line heights/positions when its GSAP timeline is built.
+  // On a first visit the custom font may still be downloading; measuring the fallback font
+  // causes the words to overlap until the next ScrollTrigger refresh. Wait for the actual
+  // document fonts before creating that timeline.
+  useEffect(() => {
+    let cancelled = false;
+    const fontSet = document.fonts;
+    const waitForFonts = fontSet?.ready ? fontSet.ready : Promise.resolve();
+    Promise.resolve(waitForFonts).then(() => {
+      if (!cancelled) setFontsReady(true);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   const sequences = dict.about.sequences;
   const unitVh = STORY.unitVh[layout];
 
   // ---- timeline + ScrollTrigger (rebuilt when language, layout or mode changes) ----------------------------------
   useLayoutEffect(() => {
+    if (!fontsReady) return undefined;
     const section = sectionRef.current;
     const stage = stageRef.current;
     const hud = hudRef.current;
@@ -132,7 +150,7 @@ function ScrollStory({ onFail }) {
       stRef.current = null;
     };
     // `dict` changes the text (and therefore line heights) → rebuild.
-  }, [plan, layout, mode, rtl, dict]);
+  }, [plan, layout, mode, rtl, dict, fontsReady]);
 
   // ---- keep the chair region in sync with the stage size ----------------------------------------------------------
   useEffect(() => {
@@ -273,6 +291,7 @@ function ScrollStory({ onFail }) {
         data-theme={initialTheme}
         data-chapter="0"
         data-ready={ready}
+        data-timeline-ready={fontsReady}
         data-nav-theme={navThemeFor(initialTheme)}
         data-nav-surface="clear"
         aria-busy={!ready}
