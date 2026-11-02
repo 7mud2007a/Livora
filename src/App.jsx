@@ -4,13 +4,12 @@ import { scrollToSection } from './lib/scroll.js';
 import SkipLink from './components/SkipLink.jsx';
 import Nav from './components/Nav.jsx';
 import Hero from './components/Hero.jsx';
-import ReservedScroll from './components/ReservedScroll.jsx';
 import AboutStory from './components/about/AboutStory.jsx';
 import Collections from './components/Collections.jsx';
 import Contact from './components/Contact.jsx';
 import Footer from './components/Footer.jsx';
 
-const ANCHORS = ['home', 'scroll-space', 'about', 'collections', 'contact'];
+const ANCHORS = ['home', 'about', 'collections', 'contact'];
 
 export default function App() {
   // Deep links (/#collections): the page is built by script, so the browser cannot scroll there by itself.
@@ -36,7 +35,6 @@ export default function App() {
       <Nav />
       <main id="main" tabIndex={-1}>
         <Hero />
-        <ReservedScroll />
         <AboutStory />
         <Collections />
         <Contact />
