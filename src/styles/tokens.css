@@ -1,0 +1,94 @@
+:root {
+  /* ── Official LIVORA palette (exact values) ─────────────────────────────── */
+  --ivory: #eae4d9; /* Warm Ivory — main background */
+  --cream: #f5f1e9; /* Soft Cream — secondary section background */
+  --stone: #c9bba7; /* Stone Beige — supporting surfaces */
+  --taupe: #9b8873; /* Taupe Brown — small accents only */
+  --muted: #766b60; /* Muted Brown Grey — secondary text */
+  --walnut: #4b4037; /* Deep Walnut — buttons and interactive elements */
+  --charcoal: #25221f; /* Warm Charcoal — headings */
+
+  /* Roles */
+  --bg: var(--ivory);
+  --bg-alt: var(--cream);
+  --text: var(--charcoal);
+  /* Secondary text. On Warm Ivory the Muted Brown Grey is only 4.1:1, so Deep Walnut (7.9:1) carries small secondary
+     text there; Muted Brown Grey is used where it passes AA (4.6:1): on Soft Cream, see .contact__info. */
+  --text-2: var(--walnut);
+  --hairline: rgb(37 34 31 / 0.16);
+  --hairline-strong: rgb(37 34 31 / 0.34);
+  --error: #8b3a2b; /* functional only (form errors); not a brand colour */
+
+  /* Layout */
+  --gutter: clamp(20px, 4.4vw, 80px);
+  --maxw: 1680px;
+  --nav-h: clamp(64px, 8.4vh, 88px);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 0.84, 0.24, 1);
+  --ease-io: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* Direction helpers: 1 in LTR, -1 in RTL (arrows, transform origins) */
+  --flip: 1;
+
+  /* Type scale, per language (see below) */
+  --f-sans: 'Livora Text', 'Livora Arabic', system-ui, sans-serif;
+  --f-display: 'Livora Display', 'Livora Arabic', system-ui, sans-serif;
+  --fw-display: 300;
+  --fs-display: 1;
+  --fs-body: 1;
+  --lh-body: 1.65;
+  --lh-display: 1.04;
+  --ls-display: -0.028em;
+  --ls-caps: 0.2em;
+  --tt-caps: uppercase;
+  --fs-caps: 0.72rem;
+}
+
+html[dir='rtl'] {
+  --flip: -1;
+}
+
+/* English: Inter Display Light headings, tracked capitals for small labels. */
+html[lang='en'] {
+  --f-sans: 'Livora Text', 'Livora Arabic', system-ui, sans-serif;
+  --f-display: 'Livora Display', 'Livora Arabic', system-ui, sans-serif;
+}
+
+/* Arabic: the supplied font leads. Its single heavy weight is balanced with smaller display sizes, generous
+   leading, no letter-spacing (it would break the joins) and no uppercasing. Inter only supplies Latin/digits. */
+html[lang='ar'] {
+  --f-sans: 'Livora Arabic', 'Livora Text', system-ui, sans-serif;
+  --f-display: 'Livora Arabic', 'Livora Display', system-ui, sans-serif;
+  --fw-display: 400;
+  --fs-display: 0.82;
+  --fs-body: 1.04;
+  --lh-body: 1.95;
+  --lh-display: 1.42;
+  --ls-display: 0;
+  --ls-caps: 0;
+  --tt-caps: none;
+  --fs-caps: 0.9rem;
+}
+
+/* Chapter / surface themes, shared by the story (CSS) and the static story. */
+[data-theme='cream'] {
+  --t-bg: var(--cream);
+  --t-fg: var(--charcoal);
+  --t-fg2: var(--muted);
+}
+[data-theme='ivory'] {
+  --t-bg: var(--ivory);
+  --t-fg: var(--charcoal);
+  --t-fg2: var(--walnut); /* Muted Brown Grey is 4.1:1 on Ivory; Walnut passes AA */
+}
+[data-theme='stone'] {
+  --t-bg: var(--stone);
+  --t-fg: var(--charcoal);
+  --t-fg2: var(--walnut);
+}
+[data-theme='walnut'] {
+  --t-bg: var(--walnut);
+  --t-fg: var(--cream);
+  --t-fg2: var(--stone);
+}

@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>LIVORA — Premium Furniture &amp; Interior Design</title>
+    <meta
+      name="description"
+      content="LIVORA is a premium furniture and interior design brand. Architectural pieces in natural materials, shaped around comfort, proportion and the way a room is lived in."
+    />
+    <meta name="theme-color" content="#EAE4D9" />
+    <meta name="color-scheme" content="light" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <!-- Open Graph / social -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="LIVORA" />
+    <meta property="og:title" content="LIVORA — Premium Furniture &amp; Interior Design" />
+    <meta
+      property="og:description"
+      content="Architectural furniture in natural materials, shaped around comfort, proportion and the way a room is lived in."
+    />
+    <meta property="og:image" content="/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="A sage upholstered armchair with walnut side panels in a sunlit arched niche." />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="ar_AR" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="LIVORA — Premium Furniture &amp; Interior Design" />
+    <meta name="twitter:image" content="/og-image.jpg" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    
+
+    <!-- Critical: the hero image (same srcset/sizes as the <img> in Hero.jsx, so the browser preloads the very file it will use)
+         and the primary Latin faces. The Arabic face is preloaded by the script below when needed. -->
+    <link
+      rel="preload"
+      as="image"
+      type="image/webp"
+      href="/images/hero-960.webp"
+      imagesrcset="/images/hero-640.webp 640w, /images/hero-960.webp 960w, /images/hero-1280.webp 1280w"
+      imagesizes="(min-width: 900px) 48vw, 100vw"
+      fetchpriority="high"
+    />
+    <link rel="preload" as="font" type="font/woff" href="/fonts/InterDisplay-Light.woff" crossorigin />
+    <link rel="preload" as="font" type="font/woff" href="/fonts/Inter-Regular.woff" crossorigin />
+
+    <script>
+      // Apply the saved (or browser) language before first paint so there is no LTR/RTL flash.
+      (function () {
+        try {
+          var lang = null;
+          var q = new URLSearchParams(location.search).get('lang');
+          if (q === 'ar' || q === 'en') lang = q;
+          if (!lang) lang = localStorage.getItem('livora:lang');
+          if (lang !== 'ar' && lang !== 'en') lang = /^ar\b/i.test(navigator.language || '') ? 'ar' : 'en';
+          var d = document.documentElement;
+          d.lang = lang;
+          d.dir = lang === 'ar' ? 'rtl' : 'ltr';
+          if (lang === 'ar') {
+            var l = document.createElement('link');
+            l.rel = 'preload';
+            l.as = 'font';
+            l.type = 'font/woff';
+            l.href = '/fonts/SFArabic-Black.woff';
+            l.crossOrigin = 'anonymous';
+            document.head.appendChild(l);
+          }
+        } catch (e) {}
+      })();
+    </script>
+
+    <style>
+      /* Prevents a white flash while the stylesheet loads. */
+      html { background: #eae4d9; }
+      body { margin: 0; background: #eae4d9; color: #25221f; }
+    </style>
+    <link rel="stylesheet" href="/assets/main-KVIVISUL.css" />
+    <link rel="modulepreload" href="/assets/chunks/chunk-6DHFEWGX.js" crossorigin />
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>
+      <div style="padding:48px 24px;max-width:640px;margin:0 auto;font-family:Georgia,serif;line-height:1.6">
+        <h1 style="font-weight:400;letter-spacing:.3em">LIVORA</h1>
+        <p>Premium furniture and interior design. This website uses JavaScript for its interactive 3D experience — please enable JavaScript to view it.</p>
+      </div>
+    </noscript>
+    <script type="module" src="/assets/main-CNRPSXWC.js"></script>
+  </body>
+</html>

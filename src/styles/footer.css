@@ -1,0 +1,115 @@
+/* ── Footer ───────────────────────────────────────────────────────────────── */
+.footer {
+  background: var(--charcoal);
+  color: var(--cream);
+}
+.footer__inner {
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding: clamp(64px, 9vw, 140px) var(--gutter) clamp(24px, 3vw, 40px);
+}
+.footer__top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px 48px;
+  padding-block-end: clamp(40px, 6vw, 88px);
+  border-block-end: 1px solid rgb(245 241 233 / 0.16);
+}
+.footer__brand {
+  font-weight: 300;
+  font-size: clamp(2.6rem, 1rem + 7.4vw, 8.5rem);
+  letter-spacing: 0.3em;
+  margin-inline-end: -0.3em;
+  color: var(--cream);
+}
+.footer__tagline {
+  max-width: 22rem;
+  color: var(--stone);
+  font-size: 1rem;
+}
+.footer__cols {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, max-content));
+  justify-content: start;
+  gap: 40px clamp(56px, 10vw, 180px);
+  padding-block: clamp(36px, 5vw, 72px);
+}
+.footer__h {
+  margin-block-end: 20px;
+  font-size: var(--fs-caps);
+  font-weight: 500;
+  letter-spacing: var(--ls-caps);
+  text-transform: var(--tt-caps);
+  color: var(--taupe);
+}
+.footer__cols li + li {
+  margin-block-start: 12px;
+}
+@media (any-pointer: coarse) {
+  /* spaced so the enlarged tap areas of neighbouring links (see base.css) touch without overlapping */
+  .footer__cols li + li {
+    margin-block-start: 22px;
+  }
+}
+.footer__cols a {
+  background: linear-gradient(currentColor, currentColor) no-repeat 0 100% / 0 1px;
+  transition: background-size 0.6s var(--ease-out);
+  padding-block-end: 2px;
+}
+html[dir='rtl'] .footer__cols a {
+  background-position: 100% 100%;
+}
+.footer__cols a:hover,
+.footer__cols a:focus-visible {
+  background-size: 100% 1px;
+}
+.footer__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px 32px;
+  padding-block-start: 24px;
+  border-block-start: 1px solid rgb(245 241 233 / 0.16);
+  font-size: 0.88rem;
+  color: var(--stone);
+}
+.footer__top-btn {
+  font-size: calc(0.74rem * var(--fs-body));
+  letter-spacing: var(--ls-caps);
+  text-transform: var(--tt-caps);
+  color: var(--cream);
+  padding-block: 8px;
+}
+html[lang='ar'] .footer__top-btn {
+  font-size: 0.95rem;
+}
+.footer__top-btn:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+}
+.footer__credit {
+  margin-block-start: 28px;
+  text-align: center;
+  font-family: 'Livora Text', system-ui, sans-serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  color: var(--stone);
+}
+.footer__credit a {
+  color: var(--cream);
+  background: linear-gradient(currentColor, currentColor) no-repeat 0 100% / 100% 1px;
+  padding-block-end: 1px;
+  transition: opacity 0.4s ease;
+}
+.footer__credit a:hover,
+.footer__credit a:focus-visible {
+  opacity: 0.72;
+}
+@media (max-width: 559.98px) {
+  .footer__cols {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

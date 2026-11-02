@@ -1,0 +1,59 @@
+/* ── Reserved scroll area ───────────────────────────────────────────────────
+   An independent block between the hero and the About story, kept for a custom scroll experience.
+   Change --reserved-height to make it longer or shorter; nothing else depends on it.
+   The sticky stage is exactly one viewport tall, so custom content can pin itself inside it.  */
+.reserved {
+  --reserved-height: 300vh;
+  position: relative;
+  height: var(--reserved-height);
+  background: linear-gradient(180deg, var(--ivory) 0%, var(--cream) 100%);
+}
+.reserved__stage {
+  position: sticky;
+  inset-block-start: 0;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+}
+
+/* Quiet architectural rules: five columns, hairlines only. */
+.reserved__rules {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  margin-inline: var(--gutter);
+}
+.reserved__rules i {
+  border-inline-start: 1px solid rgb(37 34 31 / 0.07);
+}
+.reserved__rules i:last-child {
+  border-inline-end: 1px solid rgb(37 34 31 / 0.07);
+}
+
+.reserved__label {
+  position: absolute;
+  inset-block-end: clamp(28px, 6vh, 64px);
+  inset-inline: 0;
+  margin-inline: auto;
+  width: max-content;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-size: 0.72rem;
+  letter-spacing: var(--ls-caps);
+  text-transform: var(--tt-caps);
+  color: var(--text-2);
+}
+html[lang='en'] .reserved__label {
+  letter-spacing: 0.2em;
+}
+html[lang='ar'] .reserved__label {
+  font-size: 0.92rem;
+}
+.reserved__label-line {
+  display: block;
+  width: calc(36px + 110px * var(--reserved-progress, 0));
+  height: 1px;
+  background: var(--taupe);
+}

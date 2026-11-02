@@ -1,0 +1,451 @@
+/* ── Collections ──────────────────────────────────────────────────────────── */
+.collections {
+  background: var(--ivory);
+  padding-block: clamp(88px, 12vw, 200px) clamp(72px, 9vw, 150px);
+}
+.collections__inner {
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.collections__head {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  grid-template-areas:
+    'eyebrow eyebrow'
+    'title intro';
+  align-items: end;
+  gap: clamp(20px, 3vw, 44px) clamp(32px, 6vw, 120px);
+  padding-block-end: clamp(36px, 5vw, 72px);
+}
+.collections__head .eyebrow {
+  grid-area: eyebrow;
+}
+.collections__title {
+  grid-area: title;
+  font-family: var(--f-display);
+  font-weight: var(--fw-display);
+  font-size: calc(clamp(2.4rem, 1rem + 5.2vw, 6.4rem) * var(--fs-display));
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+  color: var(--charcoal);
+}
+.collections__intro {
+  grid-area: intro;
+  max-width: 32rem;
+  color: var(--text-2);
+  font-size: clamp(1rem, 0.94rem + 0.22vw, 1.14rem);
+  padding-block-end: 0.5em;
+}
+
+.collections__bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 32px;
+  padding-block: 20px;
+  border-block: 1px solid var(--hairline);
+  margin-block-end: clamp(36px, 5vw, 72px);
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.chip {
+  min-height: 42px;
+  padding: 0 20px;
+  border: 1px solid var(--hairline-strong);
+  font-size: calc(0.74rem * var(--fs-body));
+  font-weight: 500;
+  letter-spacing: var(--ls-caps);
+  text-transform: var(--tt-caps);
+  line-height: 1;
+  transition:
+    background-color 0.45s var(--ease-out),
+    color 0.45s var(--ease-out),
+    border-color 0.45s var(--ease-out);
+}
+html[lang='en'] .chip {
+  letter-spacing: 0.14em;
+}
+html[lang='ar'] .chip {
+  font-size: 0.98rem;
+  font-weight: 400;
+}
+.chip:hover {
+  border-color: var(--walnut);
+}
+.chip[aria-pressed='true'] {
+  background: var(--walnut);
+  border-color: var(--walnut);
+  color: var(--cream);
+}
+.collections__count {
+  font-size: 0.86rem;
+  color: var(--text-2);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(36px, 4vw, 72px) clamp(24px, 3.4vw, 64px);
+  align-items: start;
+  transition: opacity 0.2s ease;
+}
+.grid[data-phase='out'] {
+  opacity: 0;
+}
+.grid__item:nth-child(3n + 2) {
+  margin-block-start: clamp(36px, 7vw, 130px);
+}
+.grid__item:nth-child(3n) {
+  margin-block-start: clamp(0px, 2.6vw, 48px);
+}
+
+.card__media {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--stone);
+  text-align: start;
+}
+.card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* The studio renders leave generous air around each piece; a slight crop-in lets the furniture fill the frame. */
+  transform: scale(1.14);
+  transform-origin: 50% 58%;
+  transition: transform 1.6s var(--ease-out);
+}
+.card__media:hover img,
+.card__media:focus-visible img {
+  transform: scale(1.2);
+}
+.card__tag {
+  position: absolute;
+  inset-block-start: 14px;
+  inset-inline-start: 14px;
+  padding: 7px 11px;
+  background: var(--cream);
+  color: var(--charcoal);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-caps);
+  text-transform: var(--tt-caps);
+  line-height: 1;
+}
+html[lang='en'] .card__tag {
+  letter-spacing: 0.16em;
+}
+html[lang='ar'] .card__tag {
+  font-size: 0.82rem;
+  font-weight: 400;
+  padding: 6px 11px 8px;
+}
+.card__index {
+  position: absolute;
+  inset-block-start: 14px;
+  inset-inline-end: 14px;
+  font-family: 'Livora Text', var(--f-sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  color: var(--walnut);
+}
+.card__peek {
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: var(--walnut);
+  color: var(--cream);
+  font-size: calc(0.72rem * var(--fs-body));
+  letter-spacing: var(--ls-caps);
+  text-transform: var(--tt-caps);
+  transform: translateY(101%);
+  transition: transform 0.7s var(--ease-out);
+}
+html[lang='ar'] .card__peek {
+  font-size: 0.95rem;
+}
+@media (hover: hover) {
+  .card__media:hover .card__peek,
+  .card__media:focus-visible .card__peek {
+    transform: none;
+  }
+}
+
+.card__body {
+  padding-block-start: 22px;
+}
+.card__cat {
+  font-size: var(--fs-caps);
+  letter-spacing: var(--ls-caps);
+  text-transform: var(--tt-caps);
+  color: var(--text-2);
+  margin-block-end: 10px;
+}
+.card__name {
+  font-family: var(--f-display);
+  font-weight: var(--fw-display);
+  font-size: calc(clamp(1.45rem, 1.1rem + 0.9vw, 2.05rem) * var(--fs-display));
+  line-height: 1.2;
+  letter-spacing: var(--ls-display);
+  color: var(--charcoal);
+}
+.card__variant {
+  display: block;
+  margin-block-start: 4px;
+  font-family: var(--f-sans);
+  font-weight: 400;
+  font-size: 0.9rem;
+  letter-spacing: 0;
+  color: var(--text-2);
+}
+.card__desc {
+  margin-block-start: 14px;
+  max-width: 30rem;
+  font-size: 0.97rem;
+  color: var(--text-2);
+}
+.card__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-block-start: 20px;
+  padding-block-start: 16px;
+  border-block-start: 1px solid var(--hairline);
+}
+.card__price {
+  font-family: 'Livora Text', var(--f-sans);
+  font-size: 0.92rem;
+  letter-spacing: 0.04em;
+  color: var(--text-2);
+  unicode-bidi: isolate;
+}
+
+.collections__empty {
+  padding-block: 64px;
+  color: var(--text-2);
+}
+.collections__notice {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-block-start: clamp(48px, 7vw, 100px);
+  font-size: 0.86rem;
+  color: var(--text-2);
+}
+.collections__notice-dot {
+  width: 7px;
+  height: 7px;
+  background: var(--taupe);
+}
+
+/* ── Product dialog ───────────────────────────────────────────────────────── */
+.pdialog {
+  width: min(1120px, calc(100vw - 2 * var(--gutter)));
+  max-width: none;
+  max-height: calc(100svh - 2 * clamp(12px, 3vw, 40px));
+  margin: auto;
+  padding: 0;
+  border: 0;
+  background: var(--cream);
+  color: var(--charcoal);
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+.pdialog::backdrop {
+  background: rgb(37 34 31 / 0.66);
+}
+.pdialog[open] {
+  animation: dialog-in 0.7s var(--ease-out) both;
+}
+.pdialog[open]::backdrop {
+  animation: fade-in 0.5s ease both;
+}
+@keyframes dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+.pdialog__inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+.pdialog__media {
+  position: relative;
+  background: var(--stone);
+  min-height: 100%;
+}
+.pdialog__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.pdialog__body {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(28px, 4vw, 64px);
+}
+.pdialog__close {
+  position: absolute;
+  inset-block-start: 14px;
+  inset-inline-end: 14px;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  background: var(--cream);
+  color: var(--charcoal);
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease;
+}
+.pdialog__close:hover {
+  background: var(--walnut);
+  color: var(--cream);
+}
+.pdialog__title {
+  font-family: var(--f-display);
+  font-weight: var(--fw-display);
+  font-size: calc(clamp(1.9rem, 1.3rem + 2vw, 3.2rem) * var(--fs-display));
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+  margin-block-start: 4px;
+  padding-inline-end: 44px;
+}
+.pdialog__title .card__variant {
+  font-size: 1rem;
+  margin-block-start: 8px;
+}
+.pdialog__desc {
+  margin-block-start: 22px;
+  color: var(--text-2);
+  max-width: 30rem;
+}
+.pdialog__h {
+  margin-block-start: 32px;
+  padding-block-end: 12px;
+  border-block-end: 1px solid var(--hairline);
+  font-size: var(--fs-caps);
+  font-weight: 500;
+  letter-spacing: var(--ls-caps);
+  text-transform: var(--tt-caps);
+  color: var(--text-2);
+}
+.pdialog__specs > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding-block: 13px;
+  border-block-end: 1px solid var(--hairline);
+  font-size: 0.95rem;
+}
+.pdialog__specs dt {
+  color: var(--text-2);
+}
+.pdialog__specs dd {
+  text-align: end;
+}
+.pdialog__tbc {
+  color: var(--text-2);
+}
+.pdialog__note {
+  margin-block-start: 22px;
+  padding: 14px 16px;
+  background: var(--ivory);
+  font-size: 0.88rem;
+  color: var(--text-2);
+}
+.pdialog__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-block-start: auto;
+  padding-block-start: 32px;
+}
+.pdialog__step {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: 'Livora Text', var(--f-sans);
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  color: var(--text-2);
+}
+.pdialog__step button {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--hairline-strong);
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease,
+    border-color 0.4s ease;
+}
+.pdialog__step button:hover {
+  background: var(--walnut);
+  border-color: var(--walnut);
+  color: var(--cream);
+}
+
+@media (max-width: 1099.98px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .grid__item:nth-child(3n + 2),
+  .grid__item:nth-child(3n) {
+    margin-block-start: 0;
+  }
+  .grid__item:nth-child(even) {
+    margin-block-start: clamp(28px, 6vw, 72px);
+  }
+}
+@media (max-width: 899.98px) {
+  .collections__head {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      'eyebrow'
+      'title'
+      'intro';
+  }
+  .pdialog__inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .pdialog__media img {
+    aspect-ratio: 4 / 3.4;
+  }
+}
+@media (max-width: 639.98px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .grid__item:nth-child(even) {
+    margin-block-start: 0;
+  }
+  .collections__bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

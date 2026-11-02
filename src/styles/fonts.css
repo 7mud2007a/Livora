@@ -1,0 +1,53 @@
+/*
+  LIVORA type system.
+
+  • "Livora Arabic" — the supplied font (SF Arabic Black). It is a single, heavy weight with Arabic glyphs only, plus
+    a handful of shared punctuation marks (space . : " ' ( ) ’ … « »). The range below hands exactly those to it.
+    Declared as weight 100–900 so the browser never fakes a bold or a light on top of it.
+  • "Livora Display" / "Livora Text" — Inter (SIL Open Font License), subsetted, supplying the Latin letters and
+    digits that the supplied font does not contain. Display = Inter Display (headings), Text = Inter (body, UI).
+
+  Swapping a face later only means editing this file (and the --f-* variables in tokens.css).
+*/
+
+@font-face {
+  font-family: 'Livora Arabic';
+  src:
+    url('/fonts/SFArabic-Black.woff') format('woff'),
+    url('/fonts/SFArabic-Black.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0020, U+0022, U+0027-0029, U+002E, U+003A, U+00AB, U+00BB, U+0600-06FF, U+0750-077F, U+08A0-08FF, U+200C-200F,
+    U+2019, U+2026, U+25CC, U+FB50-FDFF, U+FE70-FEFF;
+}
+
+@font-face {
+  font-family: 'Livora Display';
+  src: url('/fonts/InterDisplay-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Livora Display';
+  src: url('/fonts/InterDisplay-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Livora Text';
+  src: url('/fonts/Inter-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Livora Text';
+  src: url('/fonts/Inter-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}

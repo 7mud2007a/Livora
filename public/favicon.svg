@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="LIVORA">
+  <rect width="64" height="64" rx="12" fill="#25221F"/>
+  <!-- an arched niche with a drawn L: the architecture of a room, in one mark -->
+  <path d="M19 50V31a13 13 0 0 1 26 0v19z" fill="#EAE4D9"/>
+  <path d="M27.5 22.5V41.5H37.5" fill="none" stroke="#4B4037" stroke-width="3.6" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>
