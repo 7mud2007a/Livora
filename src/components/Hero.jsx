@@ -83,9 +83,7 @@ export default function Hero() {
             <img
               ref={imgRef}
               className="hero__img"
-              src="/images/hero-960.webp"
-              srcSet="/images/hero-640.webp 640w, /images/hero-960.webp 960w, /images/hero-1280.webp 1280w"
-              sizes="(min-width: 900px) 48vw, 100vw"
+              src="/images/hero-new.jpg"
               width="1280"
               height="1600"
               alt={t('hero.imageAlt')}
