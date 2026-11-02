@@ -76,6 +76,7 @@ function ScrollStory({ onFail }) {
   if (!state.current) state.current = makeState();
   const [ready, setReady] = useState(false);
   const [fontsReady, setFontsReady] = useState(false);
+  const [timelineReady, setTimelineReady] = useState(false);
 
   // The story measures Arabic line heights/positions when its GSAP timeline is built.
   // On a first visit the custom font may still be downloading; measuring the fallback font
@@ -99,6 +100,7 @@ function ScrollStory({ onFail }) {
   // ---- timeline + ScrollTrigger (rebuilt when language, layout or mode changes) ----------------------------------
   useLayoutEffect(() => {
     if (!fontsReady) return undefined;
+    setTimelineReady(false);
     const section = sectionRef.current;
     const stage = stageRef.current;
     const hud = hudRef.current;
@@ -143,9 +145,24 @@ function ScrollStory({ onFail }) {
       // Start exactly at the current scroll position (no visible catch-up after a rebuild).
       tl.progress(st.progress);
       applyProgress(st.progress);
+      // Mobile browsers can settle their visual/layout viewport one or two frames after
+      // the first paint. Refresh once after that settlement so the first scrub uses
+      // correct section boundaries without requiring the visitor to touch the page.
+      let frame = requestAnimationFrame(() => {
+        frame = requestAnimationFrame(() => {
+          if (stRef.current !== st) return;
+          ScrollTrigger.refresh();
+          st.update();
+          tl.progress(st.progress);
+          applyProgress(st.progress);
+          setTimelineReady(true);
+        });
+      });
+      setTimelineReady(true);
     }, section);
 
     return () => {
+      cancelAnimationFrame(frame);
       ctx.revert();
       stRef.current = null;
     };
@@ -291,7 +308,7 @@ function ScrollStory({ onFail }) {
         data-theme={initialTheme}
         data-chapter="0"
         data-ready={ready}
-        data-timeline-ready={fontsReady}
+        data-timeline-ready={timelineReady}
         data-nav-theme={navThemeFor(initialTheme)}
         data-nav-surface="clear"
         aria-busy={!ready}
