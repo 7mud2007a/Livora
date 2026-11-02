@@ -129,6 +129,7 @@ function ScrollStory({ onFail }) {
       chapterBtns.forEach((b, i) => b.style.setProperty('--fill', i < c ? '1' : i === c ? p.toFixed(3) : '0'));
     };
 
+    let frame = 0;
     const ctx = gsap.context(() => {
       const { tl } = buildStoryTimeline({ stage, state: state.current, plan, layout, mode, rtl });
       const st = ScrollTrigger.create({
@@ -148,7 +149,7 @@ function ScrollStory({ onFail }) {
       // Mobile browsers can settle their visual/layout viewport one or two frames after
       // the first paint. Refresh once after that settlement so the first scrub uses
       // correct section boundaries without requiring the visitor to touch the page.
-      let frame = requestAnimationFrame(() => {
+      frame = requestAnimationFrame(() => {
         frame = requestAnimationFrame(() => {
           if (stRef.current !== st) return;
           ScrollTrigger.refresh();
