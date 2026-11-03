@@ -21,6 +21,20 @@ export default function Contact() {
             {t('contact.intro')}
           </Reveal>
 
+          <Reveal delay={0.13}>
+            <a
+              className="contact__whatsapp"
+              href="https://wa.me/963930431817"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={lang === 'ar' ? 'تواصل معنا عبر واتساب' : 'Contact us on WhatsApp'}
+            >
+              <span aria-hidden="true" className="contact__whatsapp-mark">◉</span>
+              {lang === 'ar' ? 'تواصل عبر واتساب' : 'Chat on WhatsApp'}
+              <span aria-hidden="true">↗</span>
+            </a>
+          </Reveal>
+
           <Reveal as="dl" className="contact__list" delay={0.15}>
             <div>
               <dt>{t('contact.phone')}</dt>
