@@ -115,17 +115,17 @@ html[lang='ar'] .chip {
   text-align: start;
 }
 .card__media img {
+  display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  /* The studio renders leave generous air around each piece; a slight crop-in lets the furniture fill the frame. */
-  transform: scale(1.14);
-  transform-origin: 50% 58%;
-  transition: transform 1.6s var(--ease-out);
+  object-fit: contain;
+  object-position: center;
+  transform: none;
+  transition: none;
 }
 .card__media:hover img,
 .card__media:focus-visible img {
-  transform: scale(1.2);
+  transform: none;
 }
 .card__tag {
   position: absolute;
@@ -291,13 +291,17 @@ html[lang='ar'] .card__peek {
 }
 .pdialog__media {
   position: relative;
+  align-self: start;
+  width: 100%;
   background: var(--stone);
-  min-height: 100%;
 }
 .pdialog__media img {
+  display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: contain;
+  object-position: center;
 }
 .pdialog__body {
   display: flex;
@@ -434,7 +438,7 @@ html[lang='ar'] .card__peek {
     grid-template-columns: minmax(0, 1fr);
   }
   .pdialog__media img {
-    aspect-ratio: 4 / 3.4;
+    aspect-ratio: 4 / 5;
   }
 }
 @media (max-width: 639.98px) {
