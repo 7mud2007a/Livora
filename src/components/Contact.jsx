@@ -64,9 +64,6 @@ export default function Contact() {
             </div>
           </Reveal>
 
-          <Reveal as="p" className="contact__note" delay={0.2}>
-            {t('contact.placeholderNote')}
-          </Reveal>
         </div>
 
         <Reveal className="contact__formwrap" delay={0.1}>
