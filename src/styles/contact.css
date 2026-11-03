@@ -31,6 +31,29 @@
   color: var(--text-2);
   font-size: clamp(1rem, 0.94rem + 0.22vw, 1.14rem);
 }
+.contact__whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-block-start: 28px;
+  padding: 14px 20px;
+  background: var(--walnut);
+  color: var(--ivory);
+  font-size: 0.94rem;
+  letter-spacing: 0.01em;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.contact__whatsapp:hover,
+.contact__whatsapp:focus-visible {
+  background: var(--charcoal);
+  transform: translateY(-2px);
+  outline-offset: 4px;
+}
+.contact__whatsapp-mark {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
 .contact__list {
   margin-block-start: clamp(32px, 5vw, 64px);
   border-block-start: 1px solid var(--hairline);
