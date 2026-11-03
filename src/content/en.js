@@ -130,7 +130,7 @@ export default {
     title: 'The collection',
     intro:
       'Seating, tables, lighting and storage, designed to work alone or together. The catalogue is in preparation: the pieces below are placeholders that show how each one will be presented.',
-    notice: '',,
+    notice: '',
     filterLabel: 'Filter by category',
     all: 'All',
     categories: {
