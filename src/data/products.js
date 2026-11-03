@@ -1,156 +1,153 @@
-// Product catalogue data structure.
-//
-// EVERY entry below is a clearly-labelled PLACEHOLDER (`placeholder: true`): the catalogue is not final, and
-// nothing here describes real stock, real prices or real specifications. Replace entries with the real
-// catalogue, or load them from a CMS / API: ProductCard and ProductDialog only depend on this shape.
-//
-// {
-//   id:          unique slug, also the image file prefix in /public/images/products/
-//   category:    one of CATEGORIES
-//   placeholder: true while the entry is not a real, orderable product
-//   name, variant, description:  { en, ar }
-//   specs:       [{ label: {en, ar}, value: {en, ar} }]
-//   price:       { amount: number | null, currency: 'USD' }   (null => "price to be confirmed")
-//   image:       { alt: {en, ar} }  — files are /images/products/<id>-640.webp and <id>-1000.webp
-// }
-
+// LIVORA product catalogue. Prices are indicative USD estimates.
 export const CATEGORIES = ['seating', 'tables', 'lighting', 'storage'];
 
-const TBC = { en: 'To be confirmed', ar: 'يُحدَّد لاحقًا' };
+const spec = (en, ar, valueEn, valueAr) => ({
+  label: { en, ar },
+  value: { en: valueEn, ar: valueAr },
+});
 
 export const PRODUCTS = [
   {
-    id: 'armchair-sage',
-    category: 'seating',
-    placeholder: true,
-    name: { en: 'Lounge armchair', ar: 'كرسي استرخاء' },
-    variant: { en: 'Sage', ar: 'أخضر مريمي' },
+    id: 'sideboard',
+    category: 'storage',
+    placeholder: false,
+    name: { en: 'Fluted Smoked Oak Sideboard', ar: 'خزانة جانبية من البلوط المدخّن' },
+    variant: { en: 'Smoked Oak', ar: 'بلوط مدخّن' },
     description: {
-      en: 'A deep, low seat with a continuous curved back, upholstered in a textured weave and framed by walnut side panels.',
-      ar: 'مقعدٌ عميق ومنخفض بظهرٍ منحنٍ متّصل، منجّد بنسيجٍ محبوك الملمس، تؤطّره جوانب من خشب الجوز.',
+      en: 'A long, low architectural sideboard with four handleless fluted doors in matte medium-dark smoked oak. Its recessed plinth and precise vertical rhythm bring quiet structure to the room.',
+      ar: 'خزانة جانبية طويلة ومنخفضة بتصميم معماري، تضم أربعة أبواب مخدّدة بلا مقابض من خشب البلوط المدخّن متوسط إلى داكن الدرجة. تمنحها القاعدة الغائرة والتفاصيل العمودية إيقاعًا هادئًا وأنيقًا.',
     },
     specs: [
-      { label: { en: 'Upholstery', ar: 'التنجيد' }, value: { en: 'Textured weave', ar: 'نسيج محبوك الملمس' } },
-      { label: { en: 'Side panels', ar: 'الجوانب' }, value: { en: 'Walnut', ar: 'خشب الجوز' } },
-      { label: { en: 'Dimensions', ar: 'الأبعاد' }, value: TBC },
+      spec('Material', 'الخامة', 'Natural smoked oak', 'خشب بلوط مدخّن طبيعي'),
+      spec('Doors', 'الأبواب', 'Four fluted push-to-open doors', 'أربعة أبواب مخدّدة بفتح ضغطي'),
+      spec('Finish', 'التشطيب', 'Matte', 'مطفي'),
     ],
-    price: { amount: null, currency: 'USD' },
+    price: { amount: 2400, currency: 'USD' },
     image: {
+      file: '242195609_1793664003575442.jpg',
       alt: {
-        en: 'A sage upholstered lounge armchair with walnut side panels against a warm wall.',
-        ar: 'كرسي استرخاء منجّد بلون أخضر مريمي مع جوانب من خشب الجوز أمام جدار دافئ.',
+        en: 'A long fluted smoked oak sideboard against a warm ivory wall.',
+        ar: 'خزانة جانبية طويلة بأبواب مخدّدة من البلوط المدخّن أمام جدار عاجي دافئ.',
       },
     },
   },
   {
     id: 'side-table',
     category: 'tables',
-    placeholder: true,
-    name: { en: 'Pedestal side table', ar: 'طاولة جانبية بقاعدة' },
-    variant: { en: 'Stone', ar: 'حجري' },
+    placeholder: false,
+    name: { en: 'Travertine Dining Set', ar: 'طقم طاولة طعام من الترافرتين' },
+    variant: { en: 'Round Table · Four Chairs', ar: 'طاولة دائرية · أربعة كراسٍ' },
     description: {
-      en: 'A compact pedestal with a stone-toned top, sized to sit beside a lounge chair or at the end of a sofa.',
-      ar: 'قاعدة مدمجة بسطحٍ بدرجة الحجر، بحجمٍ يناسب الوقوف بجانب كرسي استرخاء أو في طرف الأريكة.',
+      en: 'A complete dining arrangement with a round natural travertine top, a sculptural fluted smoked-oak pedestal and four upholstered chairs with curved backs.',
+      ar: 'طقم طعام متكامل يضم طاولة دائرية بسطح من الترافرتين الطبيعي وقاعدة منحوتة مخدّدة من خشب البلوط المدخّن، مع أربعة كراسٍ منجّدة بظهور منحنية.',
     },
     specs: [
-      { label: { en: 'Top', ar: 'السطح' }, value: { en: 'Stone-toned finish', ar: 'تشطيب بدرجة الحجر' } },
-      { label: { en: 'Dimensions', ar: 'الأبعاد' }, value: TBC },
+      spec('Tabletop', 'سطح الطاولة', 'Natural ivory travertine', 'ترافرتين طبيعي بلون عاجي'),
+      spec('Base', 'القاعدة', 'Fluted smoked oak', 'بلوط مدخّن مخدّد'),
+      spec('Chairs', 'الكراسي', 'Four upholstered chairs', 'أربعة كراسٍ منجّدة'),
     ],
-    price: { amount: null, currency: 'USD' },
+    price: { amount: 3200, currency: 'USD' },
     image: {
+      file: '273740_1793658179136292.jpg',
       alt: {
-        en: 'A pedestal side table with a stone-toned top, holding a small bowl and a book.',
-        ar: 'طاولة جانبية بقاعدة وسطحٍ بدرجة الحجر، عليها وعاء صغير وكتاب.',
+        en: 'A round travertine dining table with four taupe upholstered smoked-oak chairs.',
+        ar: 'طاولة طعام دائرية من الترافرتين مع أربعة كراسٍ بلون تاوب وأرجل من البلوط المدخّن.',
       },
     },
   },
   {
-    id: 'armchair-sand',
-    category: 'seating',
-    placeholder: true,
-    name: { en: 'Lounge armchair', ar: 'كرسي استرخاء' },
-    variant: { en: 'Greige', ar: 'رمادي دافئ' },
+    id: 'armchair-sage',
+    category: 'tables',
+    placeholder: false,
+    name: { en: 'Sculptural Travertine Console', ar: 'كونسول منحوت من الترافرتين' },
+    variant: { en: 'Console · Organic Mirror', ar: 'طاولة كونسول · مرآة عضوية' },
     description: {
-      en: 'The same deep, rounded form in a lighter, warm grey for brighter rooms.',
-      ar: 'الشكل العميق المستدير نفسه، بدرجة رمادية دافئة أفتح تناسب الغرف الأكثر إضاءة.',
+      en: 'A refined console with a softly curved ivory travertine top, two rounded walnut supports and a matching organically shaped mirror in a fine warm-bronze frame.',
+      ar: 'طاولة كونسول أنيقة بسطح عاجي من الترافرتين ذي انحناءات ناعمة، ترتكز على دعامتين مستديرتين من خشب الجوز، وتعلوها مرآة عضوية بإطار برونزي دافئ ورفيع.',
     },
     specs: [
-      { label: { en: 'Upholstery', ar: 'التنجيد' }, value: { en: 'Textured weave', ar: 'نسيج محبوك الملمس' } },
-      { label: { en: 'Side panels', ar: 'الجوانب' }, value: { en: 'Walnut', ar: 'خشب الجوز' } },
-      { label: { en: 'Dimensions', ar: 'الأبعاد' }, value: TBC },
+      spec('Top', 'السطح', 'Warm ivory travertine', 'ترافرتين عاجي دافئ'),
+      spec('Supports', 'الدعامات', 'Rounded natural walnut', 'خشب جوز طبيعي مستدير'),
+      spec('Mirror', 'المرآة', 'Organic shape, bronze frame', 'شكل عضوي بإطار برونزي'),
     ],
-    price: { amount: null, currency: 'USD' },
+    price: { amount: 1450, currency: 'USD' },
     image: {
+      file: '351836598_1793665316117690.jpg',
       alt: {
-        en: 'The lounge armchair in a warm grey upholstery.',
-        ar: 'كرسي الاسترخاء بتنجيدٍ رمادي دافئ.',
+        en: 'A softly curved travertine console with walnut supports and an organic bronze-framed mirror.',
+        ar: 'كونسول من الترافرتين بانحناءات ناعمة ودعامات من الجوز مع مرآة عضوية بإطار برونزي.',
       },
     },
   },
   {
     id: 'floor-lamp',
     category: 'lighting',
-    placeholder: true,
-    name: { en: 'Globe floor lamp', ar: 'مصباح أرضي كروي' },
-    variant: { en: 'Opal globe', ar: 'كرة معتمة ناعمة' },
+    placeholder: false,
+    name: { en: 'Arc Floor Lamp', ar: 'مصباح أرضي بقوس' },
+    variant: { en: 'Antique Bronze · Travertine', ar: 'برونز معتّق · ترافرتين' },
     description: {
-      en: 'A soft, diffused globe on a slim stem. Light that fills a corner without announcing itself.',
-      ar: 'كرةٌ ناعمة تنشر الضوء على ساقٍ نحيلة. ضوءٌ يملأ الزاوية دون أن يُعلن عن نفسه.',
+      en: 'A graceful architectural arc in matte brushed antique bronze, anchored by a substantial travertine base and finished with a softly glowing downward-hanging opal globe.',
+      ar: 'مصباح بقوس معماري انسيابي من البرونز المعتّق المصقول بلمسة مطفية، ترتكز قائمته على قاعدة متينة من الترافرتين وتنتهي بكرة أوبال مضيئة معلّقة للأسفل.',
     },
     specs: [
-      { label: { en: 'Shade', ar: 'الغطاء' }, value: { en: 'Diffusing globe', ar: 'كرة ناشرة للضوء' } },
-      { label: { en: 'Dimensions', ar: 'الأبعاد' }, value: TBC },
+      spec('Frame', 'الهيكل', 'Brushed antique bronze', 'برونز معتّق مصقول'),
+      spec('Base', 'القاعدة', 'Natural travertine', 'ترافرتين طبيعي'),
+      spec('Shade', 'الغطاء', 'Opal glass globe', 'كرة زجاج أوبال'),
     ],
-    price: { amount: null, currency: 'USD' },
+    price: { amount: 850, currency: 'USD' },
     image: {
+      file: '791418656_1793663929329415.jpg',
       alt: {
-        en: 'A globe floor lamp on a slim stem, glowing softly against a warm wall.',
-        ar: 'مصباح أرضي بكرة ناعمة على ساقٍ نحيلة، يتوهّج بهدوء أمام جدار دافئ.',
+        en: 'A brushed bronze arc floor lamp with a travertine base and hanging opal globe.',
+        ar: 'مصباح أرضي بقوس من البرونز المصقول وقاعدة ترافرتين وكرة أوبال معلّقة.',
       },
     },
   },
   {
-    id: 'sideboard',
-    category: 'storage',
-    placeholder: true,
-    name: { en: 'Fluted sideboard', ar: 'خزانة جانبية مخدّدة' },
-    variant: { en: 'Walnut', ar: 'خشب الجوز' },
+    id: 'armchair-sand',
+    category: 'seating',
+    placeholder: false,
+    name: { en: 'Greige Walnut Lounge Chair', ar: 'كرسي استرخاء رمادي بيج مع خشب الجوز' },
+    variant: { en: 'Warm Greige', ar: 'رمادي بيج دافئ' },
     description: {
-      en: 'Low storage with vertically fluted doors, wide enough to hold a lamp, a vase and a few books.',
-      ar: 'تخزينٌ منخفض بأبوابٍ مخدّدة عموديًا، عريض بما يكفي لمصباح ومزهرية وبضعة كتب.',
+      en: 'A deep, low lounge chair with a continuous softly curved back, tactile warm-greige woven upholstery and sculptural natural-walnut side panels.',
+      ar: 'كرسي استرخاء عميق ومنخفض بظهر متصل ومنحني بنعومة، وتنجيد من نسيج ملمسه غني بلون رمادي بيج دافئ، مع جوانب منحوتة من خشب الجوز الطبيعي.',
     },
     specs: [
-      { label: { en: 'Doors', ar: 'الأبواب' }, value: { en: 'Fluted walnut', ar: 'جوز مخدّد' } },
-      { label: { en: 'Dimensions', ar: 'الأبعاد' }, value: TBC },
+      spec('Upholstery', 'التنجيد', 'Warm-greige textured weave', 'نسيج محبّب بلون رمادي بيج دافئ'),
+      spec('Side panels', 'الجوانب', 'Natural walnut', 'خشب جوز طبيعي'),
+      spec('Seat', 'المقعد', 'Deep, low-profile', 'عميق ومنخفض'),
     ],
-    price: { amount: null, currency: 'USD' },
+    price: { amount: 1250, currency: 'USD' },
     image: {
+      file: 'IMG_20261103_032216.jpg',
       alt: {
-        en: 'A low fluted walnut sideboard with a vase and a lamp base on top.',
-        ar: 'خزانة جانبية منخفضة من خشب الجوز المخدّد، يعلوها مزهرية وقاعدة مصباح.',
+        en: 'A sculptural lounge chair upholstered in warm greige fabric with walnut side panels.',
+        ar: 'كرسي استرخاء منحوت بتنجيد رمادي بيج دافئ وجوانب من خشب الجوز.',
       },
     },
   },
   {
     id: 'armchair-clay',
     category: 'seating',
-    placeholder: true,
-    name: { en: 'Lounge armchair', ar: 'كرسي استرخاء' },
-    variant: { en: 'Clay', ar: 'طيني' },
+    placeholder: false,
+    name: { en: 'Curved Bouclé Sofa & Stone Coffee Table', ar: 'كنبة بوكلية منحنية وطاولة قهوة حجرية' },
+    variant: { en: 'Ivory Bouclé · Natural Stone', ar: 'بوكلية عاجي · حجر طبيعي' },
     description: {
-      en: 'A warmer, earthier colourway of the lounge armchair, for rooms that lean towards terracotta and timber.',
-      ar: 'لونٌ أدفأ وأكثر ترابية لكرسي الاسترخاء، لغرفٍ تميل إلى الطين والخشب.',
+      en: 'A generously curved low sofa upholstered in textured ivory bouclé, paired with a round sculptural natural-stone coffee table. Styled with a clear vase of white tulips.',
+      ar: 'كنبة منخفضة بانحناءات واسعة وتنجيد بوكلية عاجي غني بالملمس، تترافق مع طاولة قهوة دائرية منحوتة من الحجر الطبيعي، وتكتمل بمزهرية شفافة من زهور التوليب البيضاء.',
     },
     specs: [
-      { label: { en: 'Upholstery', ar: 'التنجيد' }, value: { en: 'Textured weave', ar: 'نسيج محبوك الملمس' } },
-      { label: { en: 'Side panels', ar: 'الجوانب' }, value: { en: 'Walnut', ar: 'خشب الجوز' } },
-      { label: { en: 'Dimensions', ar: 'الأبعاد' }, value: TBC },
+      spec('Sofa', 'الكنبة', 'Curved ivory bouclé upholstery', 'تنجيد بوكلية عاجي بتصميم منحني'),
+      spec('Coffee table', 'طاولة القهوة', 'Round natural stone', 'حجر طبيعي دائري'),
+      spec('Set', 'الطقم', 'Sofa and coffee table', 'كنبة وطاولة قهوة'),
     ],
-    price: { amount: null, currency: 'USD' },
+    price: { amount: 3800, currency: 'USD' },
     image: {
+      file: 'IMG_20261103_032254.png',
       alt: {
-        en: 'The lounge armchair in a clay-coloured upholstery.',
-        ar: 'كرسي الاسترخاء بتنجيدٍ بلون الطين.',
+        en: 'A curved ivory bouclé sofa with a round stone coffee table and white tulips.',
+        ar: 'كنبة بوكلية عاجية منحنية مع طاولة قهوة حجرية دائرية وزهور توليب بيضاء.',
       },
     },
   },
@@ -159,10 +156,15 @@ export const PRODUCTS = [
 /** Pick the right language from a { en, ar } object. */
 export const loc = (obj, lang) => (obj ? obj[lang] ?? obj.en : '');
 
-/** Image URLs for a product: [640w, 1000w]. */
-export const productImage = (p) => ({
-  src: `/images/products/${p.id}-1000.webp`,
-  srcSet: `/images/products/${p.id}-640.webp 640w, /images/products/${p.id}-1000.webp 1000w`,
-  width: 1000,
-  height: 1250,
-});
+/** Use the exact uploaded product image; keep legacy fallback for older entries. */
+export const productImage = (p) => {
+  const src = p.image.file
+    ? `/images/products/${p.image.file}`
+    : `/images/products/${p.id}-1000.webp`;
+  return {
+    src,
+    srcSet: src,
+    width: 1000,
+    height: 1250,
+  };
+};
