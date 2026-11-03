@@ -8,12 +8,11 @@ export const SITE = {
   url: import.meta.env.PUBLIC_SITE_URL || '',
 
   contact: {
-    // PLACEHOLDERS — not real contact details.
-    email: 'studio@livora.example',
-    phone: '+000 000 000 0000',
+    email: 'bznsman77@gmail.com',
+    phone: '0930431817',
     address: {
-      en: ['Studio address line', 'City, Country'],
-      ar: ['عنوان الاستوديو', 'المدينة، الدولة'],
+      en: ['Damascus', 'Syria'],
+      ar: ['دمشق', 'سوريا'],
     },
     // The contact form posts JSON here (any Formspree-style / serverless endpoint).
     // Leave empty and the form validates, then tells the visitor honestly that nothing was sent.
