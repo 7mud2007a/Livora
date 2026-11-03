@@ -76,7 +76,7 @@ export default function ProductDialog({ product, list, onClose, onStep, onEnquir
               <div>
                 <dt>{t('collections.dialog.price')}</dt>
                 <dd>
-                  <span dir="ltr">{formatPrice(product.price, lang)}</span> <span className="pdialog__tbc">· {t('collections.priceTbc')}</span>
+                  <span dir="ltr">{formatPrice(product.price, lang)}</span>{product.price.amount == null && <span className="pdialog__tbc"> · {t('collections.priceTbc')}</span>}
                 </dd>
               </div>
             </dl>
