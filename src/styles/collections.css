@@ -254,6 +254,7 @@ html[lang='ar'] .card__peek {
 
 /* ── Product dialog ───────────────────────────────────────────────────────── */
 .pdialog {
+  position: relative;
   width: min(1120px, calc(100vw - 2 * var(--gutter)));
   max-width: none;
   max-height: calc(100svh - 2 * clamp(12px, 3vw, 40px));
