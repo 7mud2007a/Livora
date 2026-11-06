@@ -27,7 +27,7 @@
   inset: 0;
 }
 .story__bgl {
-  background: var(--t-bg);
+  background: color-mix(in srgb, var(--t-bg) 82%, transparent);
 }
 .story__canvas {
   width: 100%;
