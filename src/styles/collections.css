@@ -262,15 +262,22 @@ html[lang='ar'] .card__peek {
   border: 0;
   background: var(--cream);
   color: var(--charcoal);
+  overflow: hidden;
+}
+.pdialog::backdrop {
+  background: rgb(37 34 31 / 0.66);
+}
+.pdialog__scroll {
+  width: 100%;
+  max-height: calc(100svh - 2 * clamp(12px, 3vw, 40px));
   overflow-x: hidden;
   overflow-y: auto;
   overscroll-behavior-y: contain;
   -webkit-overflow-scrolling: touch;
   touch-action: pan-y;
+  scrollbar-width: thin;
 }
-.pdialog::backdrop {
-  background: rgb(37 34 31 / 0.66);
-}
+
 .pdialog[open] {
   animation: dialog-in 0.7s var(--ease-out) both;
 }
@@ -434,9 +441,10 @@ html[lang='ar'] .card__peek {
   .pdialog {
     height: calc(100dvh - 24px);
     max-height: none;
-    overflow-y: auto;
-    overscroll-behavior-y: contain;
-    -webkit-overflow-scrolling: touch;
+  }
+  .pdialog__scroll {
+    height: 100%;
+    max-height: none;
   }
   .collections__head {
     grid-template-columns: minmax(0, 1fr);
