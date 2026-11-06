@@ -262,8 +262,11 @@ html[lang='ar'] .card__peek {
   border: 0;
   background: var(--cream);
   color: var(--charcoal);
-  overflow: auto;
-  overscroll-behavior: contain;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
 }
 .pdialog::backdrop {
   background: rgb(37 34 31 / 0.66);
@@ -428,6 +431,13 @@ html[lang='ar'] .card__peek {
   }
 }
 @media (max-width: 899.98px) {
+  .pdialog {
+    height: calc(100dvh - 24px);
+    max-height: none;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    -webkit-overflow-scrolling: touch;
+  }
   .collections__head {
     grid-template-columns: minmax(0, 1fr);
     grid-template-areas:
