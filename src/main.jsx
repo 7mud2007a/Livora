@@ -21,6 +21,12 @@ const lenis = new Lenis({
   respectReducedMotion: true,
 });
 
+// Pause the page-wide smooth-scroll engine while a modal owns touch scrolling.
+const pauseForDialog = () => lenis.stop();
+const resumeAfterDialog = () => lenis.start();
+document.addEventListener('livora:dialog-open', pauseForDialog);
+document.addEventListener('livora:dialog-close', resumeAfterDialog);
+
 lenis.on('scroll', ScrollTrigger.update);
 const updateLenis = (time) => lenis.raf(time * 1000);
 gsap.ticker.add(updateLenis);
