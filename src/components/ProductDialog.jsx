@@ -62,12 +62,12 @@ export default function ProductDialog({ product, list, onClose, onStep, onEnquir
       }}
     >
       {product && (
-        <div className="pdialog__scroll" data-lenis-prevent>
-        <div className="pdialog__inner">
+        <>
           <button type="button" className="pdialog__close" onClick={() => ref.current.close()} aria-label={t('collections.dialog.close')}>
             <CloseIcon />
           </button>
-
+          <div className="pdialog__scroll" data-lenis-prevent>
+        <div className="pdialog__inner">
           <div className="pdialog__media">
             <img src={img.src} srcSet={img.srcSet} sizes="(min-width: 900px) 46vw, 92vw" width={img.width} height={img.height} alt={loc(product.image.alt, lang)} />
             {product.placeholder && <span className="card__tag">{t('collections.placeholderTag')}</span>}
@@ -120,7 +120,8 @@ export default function ProductDialog({ product, list, onClose, onStep, onEnquir
             </div>
           </div>
         </div>
-        </div>
+          </div>
+        </>
       )}
     </dialog>
   );
