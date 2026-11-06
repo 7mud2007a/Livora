@@ -1,6 +1,6 @@
 /* ── Contact ──────────────────────────────────────────────────────────────── */
 .contact {
-  background: color-mix(in srgb, var(--cream) 84%, transparent);
+  background: transparent;
   padding-block: clamp(88px, 11vw, 180px);
 }
 .contact__inner {
