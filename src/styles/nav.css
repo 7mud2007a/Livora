@@ -18,11 +18,11 @@
   color: var(--cream);
 }
 .nav[data-surface='solid'] {
-  background-color: rgb(234 228 217 / 0.95);
+  background-color: rgb(234 228 217 / 0.84);
   box-shadow: 0 1px 0 var(--hairline);
 }
 .nav[data-surface='solid'][data-theme='dark'] {
-  background-color: rgb(37 34 31 / 0.95);
+  background-color: rgb(37 34 31 / 0.88);
   box-shadow: 0 1px 0 rgb(245 241 233 / 0.12);
 }
 .nav.is-menu-open,
