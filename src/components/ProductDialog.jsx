@@ -51,6 +51,7 @@ export default function ProductDialog({ product, list, onClose, onStep, onEnquir
     <dialog
       ref={ref}
       className="pdialog"
+      data-lenis-prevent
       aria-labelledby="pdialog-title"
       onClose={() => {
         unlockPageScroll();
