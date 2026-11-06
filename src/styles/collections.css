@@ -1,6 +1,6 @@
 /* ── Collections ──────────────────────────────────────────────────────────── */
 .collections {
-  background: var(--ivory);
+  background: color-mix(in srgb, var(--ivory) 82%, transparent);
   padding-block: clamp(88px, 12vw, 200px) clamp(72px, 9vw, 150px);
 }
 .collections__inner {
