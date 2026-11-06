@@ -10,6 +10,7 @@ export default function ProductDialog({ product, list, onClose, onStep, onEnquir
   const ref = useRef(null);
   const previousOverflow = useRef(null);
   const previousScrollY = useRef(0);
+  const skipRestoreOnClose = useRef(false);
 
   const unlockPageScroll = () => {
     if (!previousOverflow.current) return;
@@ -56,7 +57,13 @@ export default function ProductDialog({ product, list, onClose, onStep, onEnquir
       aria-labelledby="pdialog-title"
       onClose={() => {
         unlockPageScroll();
-        document.dispatchEvent(new CustomEvent('livora:dialog-close', { detail: { scrollY: previousScrollY.current } }));
+        document.dispatchEvent(new CustomEvent('livora:dialog-close', {
+          detail: {
+            scrollY: previousScrollY.current,
+            skipRestore: skipRestoreOnClose.current,
+          },
+        }));
+        skipRestoreOnClose.current = false;
         onClose();
       }}
       onClick={(e) => {
@@ -102,7 +109,14 @@ export default function ProductDialog({ product, list, onClose, onStep, onEnquir
             {product.placeholder && <p className="pdialog__note">{t('collections.dialog.placeholderNote')}</p>}
 
             <div className="pdialog__actions">
-              <button type="button" className="btn btn--primary" onClick={() => onEnquire(product)}>
+              <button
+                type="button"
+                className="btn btn--primary"
+                onClick={() => {
+                  skipRestoreOnClose.current = true;
+                  onEnquire(product);
+                }}
+              >
                 <span>{t('collections.dialog.enquire')}</span>
                 <ArrowIcon />
               </button>
