@@ -80,7 +80,7 @@ export default {
           'We leave room for life to make it yours.',
         ],
       },
-
+    ],
   },
   collections: {
     index: '02',
