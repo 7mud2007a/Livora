@@ -26,7 +26,7 @@ const pauseForDialog = () => lenis.stop();
 const resumeAfterDialog = (event) => {
   lenis.start();
   const scrollY = event.detail?.scrollY;
-  if (Number.isFinite(scrollY)) {
+  if (!event.detail?.skipRestore && Number.isFinite(scrollY)) {
     requestAnimationFrame(() => {
       lenis.scrollTo(scrollY, { immediate: true, force: true });
     });
