@@ -3,41 +3,41 @@
 
 export const STORY = {
   /** Scroll length of one unit, in vh. Raise it for a slower, longer story. */
-  unitVh: { x: 34, y: 30 },
+  unitVh: { x: 30, y: 26 },
 
   /** Chair slides in from the edge before the first text. */
   enter: 1.3,
   /** Units between successive line reveals ('block' = whole paragraph builds up, 'single' = one line at a time). */
-  lineStep: { block: 0.62, single: 0.72 },
+  lineStep: { block: 0.52, single: 0.58 },
   /** Duration of one line reveal in 'block' mode. */
   reveal: 0.55,
   /** The finished paragraph rests fully visible for this long before it leaves ('block' mode). */
-  hold: 0.9,
+  hold: 0.65,
   /** Duration of the paragraph leaving ('block' mode). */
   leave: 0.7,
   /** The chair's trip from one side to the other. */
-  cross: 2.0,
+  cross: 1.65,
   /** The next text starts when the chair is this far (0..1) through the trip — it has already left the text's half. */
   textLead: 0.8,
   /** The chair starts moving this long before the previous text has fully gone. */
   crossOverlap: 0.12,
   /** The final call to action rests this long before the story releases the page. */
-  tail: 1.3,
+  tail: 0.9,
 
   /** Which half the text sits in for each chapter (left-to-right layout). The chair takes the other half. */
-  textSide: ['right', 'left', 'right', 'left', 'right'],
+  textSide: ['right', 'left', 'right'],
   /**
    * Chair orientation per chapter as a position on a clock face seen from above, the viewer being at 6 o'clock.
    * 6 = facing the viewer; 5 = turned toward screen-right; 7 = toward screen-left.
    */
-  clock: [5, 7, 4.5, 7.5, 5],
+  clock: [5, 7, 5],
   /** Mirror sides (and chair turns) when the page is right-to-left. */
   mirrorInRtl: true,
 
   /** Chapter backgrounds, in order. These are the official palette colours (see styles/tokens.css). */
-  themes: ['cream', 'ivory', 'stone', 'walnut', 'ivory'],
+  themes: ['cream', 'stone', 'ivory'],
   /** Soft contact-shadow strength per chapter (it reads weakly on the dark walnut chapter). */
-  shadow: [1, 1, 1, 0.7, 1],
+  shadow: [1, 1, 1],
 };
 
 export const clockToYaw = (clock) => (6 - clock) * 30;
