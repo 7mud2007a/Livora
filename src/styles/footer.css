@@ -1,6 +1,6 @@
 /* ── Footer ───────────────────────────────────────────────────────────────── */
 .footer {
-  background: var(--charcoal);
+  background: color-mix(in srgb, var(--charcoal) 92%, transparent);
   color: var(--cream);
 }
 .footer__inner {
