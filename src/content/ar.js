@@ -80,7 +80,7 @@ export default {
           'ونترك للحياة مساحة لتجعل المكان لك.',
         ],
       },
-
+    ],
   },
   collections: {
     index: '٠٢',
