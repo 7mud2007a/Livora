@@ -9,6 +9,7 @@ export default function ProductDialog({ product, list, onClose, onStep, onEnquir
   const { t, lang } = useI18n();
   const ref = useRef(null);
   const previousOverflow = useRef(null);
+  const previousScrollY = useRef(0);
 
   const unlockPageScroll = () => {
     if (!previousOverflow.current) return;
@@ -21,6 +22,7 @@ export default function ProductDialog({ product, list, onClose, onStep, onEnquir
     const d = ref.current;
     if (!d) return undefined;
     if (product && !d.open) {
+      previousScrollY.current = window.scrollY;
       previousOverflow.current = {
         html: document.documentElement.style.overflow,
         body: document.body.style.overflow,
@@ -54,7 +56,7 @@ export default function ProductDialog({ product, list, onClose, onStep, onEnquir
       aria-labelledby="pdialog-title"
       onClose={() => {
         unlockPageScroll();
-        document.dispatchEvent(new Event('livora:dialog-close'));
+        document.dispatchEvent(new CustomEvent('livora:dialog-close', { detail: { scrollY: previousScrollY.current } }));
         onClose();
       }}
       onClick={(e) => {
