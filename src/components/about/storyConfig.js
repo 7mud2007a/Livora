@@ -35,7 +35,7 @@ export const STORY = {
   mirrorInRtl: true,
 
   /** Chapter backgrounds, in order. These are the official palette colours (see styles/tokens.css). */
-  themes: ['cream', 'stone', 'ivory'],
+  themes: ['cream', 'stone', 'walnut'],
   /** Soft contact-shadow strength per chapter (it reads weakly on the dark walnut chapter). */
   shadow: [1, 1, 1],
 };
