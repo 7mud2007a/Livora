@@ -1,7 +1,6 @@
 import { useI18n } from '../i18n/I18nProvider.jsx';
 import { SITE } from '../config/site.js';
 import Reveal from './Reveal.jsx';
-import ContactForm from './ContactForm.jsx';
 
 export default function Contact() {
   const { t, lang } = useI18n();
@@ -80,9 +79,6 @@ export default function Contact() {
 
         </div>
 
-        <Reveal className="contact__formwrap" delay={0.1}>
-          <ContactForm />
-        </Reveal>
       </div>
     </section>
   );
