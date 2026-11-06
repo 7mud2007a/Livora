@@ -28,6 +28,7 @@ export default function ProductDialog({ product, list, onClose, onStep, onEnquir
       document.documentElement.style.overflow = 'hidden';
       document.body.style.overflow = 'hidden';
       d.showModal();
+      document.dispatchEvent(new Event('livora:dialog-open'));
     }
     if (!product && d.open) d.close();
     return () => {
@@ -52,7 +53,8 @@ export default function ProductDialog({ product, list, onClose, onStep, onEnquir
       className="pdialog"
       aria-labelledby="pdialog-title"
       onClose={() => {
-        document.documentElement.style.overflow = '';
+        unlockPageScroll();
+        document.dispatchEvent(new Event('livora:dialog-close'));
         onClose();
       }}
       onClick={(e) => {
