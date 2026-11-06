@@ -51,7 +51,6 @@ export default function ProductDialog({ product, list, onClose, onStep, onEnquir
     <dialog
       ref={ref}
       className="pdialog"
-      data-lenis-prevent
       aria-labelledby="pdialog-title"
       onClose={() => {
         unlockPageScroll();
@@ -63,6 +62,7 @@ export default function ProductDialog({ product, list, onClose, onStep, onEnquir
       }}
     >
       {product && (
+        <div className="pdialog__scroll" data-lenis-prevent>
         <div className="pdialog__inner">
           <button type="button" className="pdialog__close" onClick={() => ref.current.close()} aria-label={t('collections.dialog.close')}>
             <CloseIcon />
@@ -119,6 +119,7 @@ export default function ProductDialog({ product, list, onClose, onStep, onEnquir
               )}
             </div>
           </div>
+        </div>
         </div>
       )}
     </dialog>
