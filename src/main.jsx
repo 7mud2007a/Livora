@@ -23,7 +23,15 @@ const lenis = new Lenis({
 
 // Pause the page-wide smooth-scroll engine while a modal owns touch scrolling.
 const pauseForDialog = () => lenis.stop();
-const resumeAfterDialog = () => lenis.start();
+const resumeAfterDialog = (event) => {
+  lenis.start();
+  const scrollY = event.detail?.scrollY;
+  if (Number.isFinite(scrollY)) {
+    requestAnimationFrame(() => {
+      lenis.scrollTo(scrollY, { immediate: true, force: true });
+    });
+  }
+};
 document.addEventListener('livora:dialog-open', pauseForDialog);
 document.addEventListener('livora:dialog-close', resumeAfterDialog);
 
