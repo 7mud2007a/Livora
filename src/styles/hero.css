@@ -1,7 +1,7 @@
 /* ── Hero ─────────────────────────────────────────────────────────────────── */
 .hero {
   position: relative;
-  background: var(--ivory);
+  background: color-mix(in srgb, var(--ivory) 78%, transparent);
   color: var(--charcoal);
   padding-block-start: var(--nav-h);
   overflow: clip;
