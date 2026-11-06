@@ -2,7 +2,7 @@
 .footer {
   background: transparent;
   color: var(--charcoal);
-  color: var(--cream);
+  color: var(--charcoal);
 }
 .footer__inner {
   max-width: var(--maxw);
@@ -16,18 +16,18 @@
   justify-content: space-between;
   gap: 24px 48px;
   padding-block-end: clamp(40px, 6vw, 88px);
-  border-block-end: 1px solid rgb(245 241 233 / 0.16);
+  border-block-end: 1px solid var(--hairline);
 }
 .footer__brand {
   font-weight: 300;
   font-size: clamp(2.6rem, 1rem + 7.4vw, 8.5rem);
   letter-spacing: 0.3em;
   margin-inline-end: -0.3em;
-  color: var(--cream);
+  color: var(--charcoal);
 }
 .footer__tagline {
   max-width: 22rem;
-  color: var(--stone);
+  color: var(--walnut);
   font-size: 1rem;
 }
 .footer__cols {
@@ -43,7 +43,7 @@
   font-weight: 500;
   letter-spacing: var(--ls-caps);
   text-transform: var(--tt-caps);
-  color: var(--taupe);
+  color: var(--walnut);
 }
 .footer__cols li + li {
   margin-block-start: 12px;
@@ -73,15 +73,15 @@ html[dir='rtl'] .footer__cols a {
   justify-content: space-between;
   gap: 14px 32px;
   padding-block-start: 24px;
-  border-block-start: 1px solid rgb(245 241 233 / 0.16);
+  border-block-start: 1px solid var(--hairline);
   font-size: 0.88rem;
-  color: var(--stone);
+  color: var(--walnut);
 }
 .footer__top-btn {
   font-size: calc(0.74rem * var(--fs-body));
   letter-spacing: var(--ls-caps);
   text-transform: var(--tt-caps);
-  color: var(--cream);
+  color: var(--charcoal);
   padding-block: 8px;
 }
 html[lang='ar'] .footer__top-btn {
@@ -97,10 +97,10 @@ html[lang='ar'] .footer__top-btn {
   font-family: 'Livora Text', system-ui, sans-serif;
   font-size: 0.82rem;
   letter-spacing: 0.04em;
-  color: var(--stone);
+  color: var(--walnut);
 }
 .footer__credit a {
-  color: var(--cream);
+  color: var(--charcoal);
   background: linear-gradient(currentColor, currentColor) no-repeat 0 100% / 100% 1px;
   padding-block-end: 1px;
   transition: opacity 0.4s ease;
