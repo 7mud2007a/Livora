@@ -8,23 +8,36 @@ import { ArrowIcon, ChevronIcon, CloseIcon } from './Icons.jsx';
 export default function ProductDialog({ product, list, onClose, onStep, onEnquire }) {
   const { t, lang } = useI18n();
   const ref = useRef(null);
+  const previousOverflow = useRef(null);
+
+  const unlockPageScroll = () => {
+    if (!previousOverflow.current) return;
+    document.documentElement.style.overflow = previousOverflow.current.html;
+    document.body.style.overflow = previousOverflow.current.body;
+    previousOverflow.current = null;
+  };
 
   useEffect(() => {
     const d = ref.current;
     if (!d) return undefined;
     if (product && !d.open) {
-      d.showModal();
+      previousOverflow.current = {
+        html: document.documentElement.style.overflow,
+        body: document.body.style.overflow,
+      };
       document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
+      d.showModal();
     }
     if (!product && d.open) d.close();
     return () => {
-      if (!product) document.documentElement.style.overflow = '';
+      if (!product) unlockPageScroll();
     };
   }, [product]);
 
   useEffect(
     () => () => {
-      document.documentElement.style.overflow = '';
+      unlockPageScroll();
     },
     []
   );
